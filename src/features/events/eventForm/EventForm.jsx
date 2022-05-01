@@ -1,6 +1,7 @@
-import cuid from "cuid";
-import React, { useState } from "react";
-import { Button, Form, Header, Segment } from "semantic-ui-react";
+import cuid from 'cuid';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Form, Header, Segment } from 'semantic-ui-react';
 
 function EventForm({
   setFormOpen,
@@ -10,12 +11,12 @@ function EventForm({
   updateEvent,
 }) {
   const initialValues = selectedEvent ?? {
-    title: "",
-    category: "",
-    description: "",
-    city: "",
-    venue: "",
-    date: "",
+    title: '',
+    category: '',
+    description: '',
+    city: '',
+    venue: '',
+    date: '',
   };
   const [values, setValues] = useState(initialValues);
 
@@ -31,16 +32,16 @@ function EventForm({
       : createEvent({
           ...values,
           id: cuid(),
-          hostedBy: "Bob",
+          hostedBy: 'Bob',
           attendees: [],
-          hostPhotoURL: "/assets/user.png",
+          hostPhotoURL: '/assets/user.png',
         });
     setFormOpen(false);
   }
 
   return (
     <Segment clearing>
-      <Header content={selectedEvent ? "Edit the event" : "Create new event"} />
+      <Header content={selectedEvent ? 'Edit the event' : 'Create new event'} />
       <Form onSubmit={handleFormSubmit}>
         <Form.Field>
           <input
@@ -98,7 +99,8 @@ function EventForm({
         </Form.Field>
         <Button type='submit' floated='right' positive content='Submit' />
         <Button
-          onClick={() => setFormOpen(false)}
+          as={Link}
+          to={'/events'}
           type='submit'
           floated='right'
           content='Cancel'
