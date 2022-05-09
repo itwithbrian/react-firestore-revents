@@ -6,6 +6,7 @@ import EventForm from '../../features/events/eventForm/EventForm';
 import HomePage from '../../features/home/HomePage';
 import NavBar from '../../features/nav/NavBar';
 import Sandbox from '../../features/sandbox/Sandbox';
+import ModalManager from '../common/modals/ModalManager';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className='App'>
       <Container className='main'>
+        <ModalManager />
         <NavBar> </NavBar>
         <Routes>
           <Route path='/' element={<HomePage />} />
